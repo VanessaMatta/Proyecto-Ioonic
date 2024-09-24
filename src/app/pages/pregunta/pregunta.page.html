@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true" class="ion-padding-horizontal ion-text-center" style="--background: rgb(0, 33, 66);">
+  <div class="background"></div>
+  <div class="centrar">
+    <div>
+      <h1 class="ion-padding-bottom">Sistema de Asistencia</h1>
+      <ion-card color="dark">
+        <img src="../../../assets/img/Logo_DuocUC.svg.png" style="width: 60%;">
+        <ion-card-header>
+          <h1>Recuperar Contraseña</h1>
+          <h4>{{user.preguntaSecreta}}</h4>
+        </ion-card-header>
+        <ion-card-content class="ion-padding-vertical">
+          <ion-item color="dark">
+            <ion-input [(ngModel)]="respuesta" type="text" label="Respuesta" labelPlacement="floating" fill="outline" placeholder="Ej: Elefante" required></ion-input>
+          </ion-item>
+        </ion-card-content>
+
+        <ion-button type="submit" class="ion-padding-vertical button1" (click)="validarRespuesSecreta()" color="warning">Recuperar contraseña</ion-button>
+      </ion-card>
+      <ion-row>
+        <ion-col>
+          <ion-button shape="round" size="small" color="warning"
+          (click)="navegar('/Ingreso')">
+          <ion-icon slot="start" name="person"></ion-icon>
+            Login
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

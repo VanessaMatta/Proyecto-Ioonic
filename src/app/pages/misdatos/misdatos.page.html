@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title #titulo size="large">
+      Sistema de Asistencia
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: rgb(0, 33, 66);">
+  <div class="centrar">
+    <div class="enmarcar ion-text-center white-box" #page>
+      <img src="../../../assets/img/Logo_DuocUC.svg.png" style="width: 60%;">
+      <ion-toolbar class="ion-padding-top" color="dark">
+        <h1 *ngIf="usuario.cuenta.trim() !== ''">
+          ¡Bienvenido(a) 
+          {{ usuario.nombre }} 
+          {{ usuario.apellido }}!
+        </h1>
+        <h1 *ngIf="usuario.cuenta.trim() == ''">
+          Para usar el sistema debe llenar sus datos
+        </h1>
+        <h2>
+          Mis datos personales
+        </h2>
+      </ion-toolbar>
+      
+      <ion-item #itemCuenta  color="dark">
+        <ion-input [(ngModel)]="usuario.cuenta"
+            label="Cuenta" labelPlacement="floating"
+            placeholder="Ej: atorres"></ion-input>
+      </ion-item>
+
+      <ion-item #itemNombre color="dark">
+        <ion-input [(ngModel)]="usuario.nombre" 
+            label="Nombre" labelPlacement="floating"
+            placeholder="Ej: Ana"></ion-input>
+      </ion-item>
+
+      <ion-item #itemApellido color="dark">
+        <ion-input [(ngModel)]="usuario.apellido"
+            label="Apellido" labelPlacement="floating"
+            placeholder="Ej: Torres"></ion-input>
+      </ion-item>
+
+      <ion-item #itemCorreo color="dark">
+        <ion-input [(ngModel)]="usuario.correo"
+        label="Correo" labelPlacement="floating"
+        placeholder="Ej: atorres@duocuc.cl"></ion-input>
+      </ion-item>
+
+      <ion-item #itemPreguntaSecreta color="dark">
+        <ion-input [(ngModel)]="usuario.preguntaSecreta"
+        label="Pregunta Secreta" labelPlacement="floating"
+        placeholder="Ej: ¿Cuál es tu animal favorito?"></ion-input>
+      </ion-item>
+
+      <ion-item #itemRespuestaSecreta color="dark">
+        <ion-input [(ngModel)]="usuario.respuestaSecreta"
+        label="Respuesta Secreta" labelPlacement="floating"
+        placeholder="Ej: gato"></ion-input>
+      </ion-item>
+
+      <ion-item #itemEducacion class="font-size-12" color="dark">
+        <ion-select [(ngModel)]="usuario.nivelEducacional!.id"
+            (ionChange)="actualizarNivelEducacional($event)"
+            label="Educación" position="floating">
+          <ion-select-option *ngFor="let nivelEducacional of listaNivelesEducacionales" 
+            [value]="nivelEducacional.id">
+              {{nivelEducacional.nombre}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item #itemFechaNacimiento class="ion-padding-bottom" color="dark">
+        <table>
+          <tr>
+            <td class="font-size-12">
+              Nacimiento
+            </td>
+            <td class="cell-align-right">
+              <input
+                matInput 
+                [matDatepicker]="fechaNacimiento" 
+                [(ngModel)]="usuario.fechaNacimiento"
+                placeholder="dd/mm/yyyy"
+                class="date-width">
+            </td>
+            <td class="cell-width-0"  >
+              <mat-datepicker-toggle matSuffix [for]="fechaNacimiento"></mat-datepicker-toggle>
+              <mat-datepicker #fechaNacimiento></mat-datepicker>
+            </td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <ion-item #itemPassword color="dark">
+        <ion-input [(ngModel)]="usuario.password"
+        label="Contraseña" labelPlacement="floating"
+        placeholder="Ej: 1234"></ion-input>
+      </ion-item>
+
+      <ion-item #itemPassword color="dark">
+        <ion-input [(ngModel)]="usuario.password"
+        label="Repetir Contraseña" labelPlacement="floating"
+        placeholder="Ej: 1234"></ion-input>
+      </ion-item>
+
+      <ion-button shape="round" size="small" color="warning" 
+        (click)="limpiarPagina()">
+      Limpiar datos
+      </ion-button>
+
+      <ion-button shape="round" size="small" color="warning" 
+          (click)="mostrarDatosPersona()">
+        Actualizar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+
+
+<ion-footer>
+  <ion-toolbar class="ion-text-center" color="dark">
+    <ion-button shape="round" size="small" color="warning"
+        (click)="navegar('/inicio')">
+      <ion-icon slot="start" name="home"></ion-icon>
+      Inicio
+    </ion-button>
+
+    <ion-button shape="round" size="small" color="warning"
+        (click)="navegar('/misdatos')">
+      <ion-icon slot="start" name="log-out"></ion-icon>
+      Mis datos
+    </ion-button>
+
+    <ion-button shape="round" size="small" color="warning"
+        (click)="navegar('/Ingreso')">
+      <ion-icon slot="start" name="log-out"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

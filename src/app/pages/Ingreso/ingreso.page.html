@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <div class="centrar">
+    <div class="enmarcar-ingreso">
+      <ion-card class="ion-text-center" >
+        
+        <img alt="DUOC" src="../../../assets/img/duoc-uc-logo-F1437952BE-seeklogo.com.png"  class="foto-portada" style="width: 100%;" />
+      
+        <ion-card-content>
+
+          <ion-card-header>
+            <ion-toolbar>
+              <h1>Sistema de Asistencia</h1>
+              <h2>Inicio de sesión</h2>
+            </ion-toolbar>
+          </ion-card-header>
+
+          <ion-item #itemCuenta class="rounded" color="light">
+            <ion-avatar aria-hidden="true" slot="start">
+              <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <ion-input  [(ngModel)]="usuario.cuenta" 
+                label="Cuenta" labelPlacement="floating"
+                placeholder="Ej: atorres"></ion-input>
+          </ion-item>
+
+          <br>
+          
+          <ion-item #itemPassword class="rounded" color="light">
+            <ion-icon aria-hidden="true" name="key" slot="start"></ion-icon>
+            <ion-input [(ngModel)]="usuario.password" 
+                label="Contraseña" labelPlacement="floating" type="password"
+                placeholder="Ej: 1234"></ion-input>
+          </ion-item>
+
+          <div class="ion-margin-top">
+            <ion-button shape="round" (click)="ingresar()" class="ancho-boton" color="dark" style="width: 250px; height: 50px;">
+              Ingresar
+            </ion-button>
+
+            <ion-button shape="round" (click)="ingresar()" class="ancho-boton" color="light" style="width: 250px; height: 50px;">
+              Crear cuenta
+            </ion-button>
+          </div>
+          
+            <h2>  ------- o -------   </h2>
+            <br>
+
+            <!-- <ion-label>
+              <a [routerLink]="'/correo'">Recuperar Contraseña</a>
+            </ion-label> -->
+           
+            <ion-button size="small"  (click)="correo()" class="ancho-boton" color="warning" style="width: 250px;">
+              Recuperar contraseña
+            </ion-button>
+
+            
+            
+        </ion-card-content>
+
+      </ion-card>
+
+
+
+    </div>
+  </div>
+</ion-content>
